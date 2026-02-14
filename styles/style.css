@@ -106,6 +106,12 @@ a {
   border-bottom: 1px solid gray !important;
   text-decoration: none !important;
 }
+ /* line to round indicator  */
+.carousel .carousel-indicators button {
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%; 
+}
 
 .banner-image{
   width: 100% !important;
