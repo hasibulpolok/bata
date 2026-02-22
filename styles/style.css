@@ -160,6 +160,52 @@ a {
  .carousel-control-next {
  width: 44px;
  }
+ /* tabs look compact */
+  .landed-tabs .nav-link {
+    padding: .35rem .7rem;
+    font-size: .85rem;
+    border-radius: 999px;
+    color: #111;
+  }
+  .landed-tabs .nav-link.active {
+    background: #f1f1f1;
+    color: #111;
+  }
+
+  /* card */
+  .landed-img {
+    height: 140px;
+    object-fit: contain;
+  }
+
+  /* wishlist icon */
+  .landed-wish {
+    color: #777;
+  }
+  .landed-wish:hover { color: #111; }
+
+  /* button hidden until hover (like your video) */
+  .landed-btn {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: .2s ease;
+  }
+  .landed-card:hover .landed-btn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* hover => red */
+  .landed-card:hover .landed-btn,
+  .landed-btn:hover {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
+  }
+
+  /* arrows size */
+  .landed-control { width: 44px; }
+
 
 @media (min-width: 992px) {
   .topbar-row {
