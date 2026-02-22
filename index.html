@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
   <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/styles/style.css">
 
   <!-- minimal css -->
   <style>
@@ -201,62 +202,231 @@
   </section>
 
 
-  <section class="py-3">
-    <div class="container">
-      <div class="row g-3">
-        <div class="col-6 col-md-3">
-          <img src="assets/images/slider-1.webp" class="img-fluid w-100" alt="Men">
+  <section class="py-4">
+    <div class="px-2">
+      <div class="d-flex flex-wrap">
+
+        <!-- Card 1 -->
+        <div class="w-50 w-md-25 p-2">
+          <a href="mens.html" class="category-card">
+            <div class="card border-0 overflow-hidden">
+              <img src="assets/images/slider-1.webp" class="img-fluid w-100" alt="Men">
+            </div>
+          </a>
         </div>
-        <div class="col-6 col-md-3">
-          <img src="assets/images/slider-2.webp" class="img-fluid w-100" alt="Women">
+
+        <!-- Card 2 -->
+        <div class="w-50 w-md-25 p-2">
+          <a href="women.html" class="category-card">
+            <div class="card border-0 overflow-hidden">
+              <img src="assets/images/slider-2.webp" class="img-fluid w-100" alt="Women">
+            </div>
+          </a>
         </div>
-        <div class="col-6 col-md-3">
-          <img src="assets/images/slider-3.webp" class="img-fluid w-100" alt="Kids">
+
+        <!-- Card 3 -->
+        <div class="w-50 w-md-25 p-2">
+          <a href="kids.html" class="category-card">
+            <div class="card border-0 overflow-hidden">
+              <img src="assets/images/slider-3.webp" class="img-fluid w-100" alt="Kids">
+            </div>
+          </a>
         </div>
-        <div class="col-6 col-md-3">
-          <img src="assets/images/slider-4.webp" class="img-fluid w-100" alt="Accessories">
+
+        <!-- Card 4 -->
+        <div class="w-50 w-md-25 p-2">
+          <a href="accessories.html" class="category-card">
+            <div class="card border-0 overflow-hidden">
+              <img src="assets/images/slider-4.webp" class="img-fluid w-100" alt="Accessories">
+            </div>
+          </a>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- =============== COUPONS / GIFT VOUCHER BANNER =============== -->
   <section class="pb-4">
-    <div class="container">
+    <div class="px-2">
       <img src="assets/images/coupons.webp" class="img-fluid w-100" alt="Coupons">
     </div>
   </section>
 
   <!-- =============== BEST SELLER (basic placeholder) =============== -->
   <section class="py-4">
-    <div class="container">
-      <h2 class="fw-semibold mb-4">Best Seller</h2>
+  <div class=" px-2 my-5">
+    <h2 class="fw-semibold mb-4">Best Seller</h2>
 
-      <div class="row g-3 row-cols-2 row-cols-md-4">
-        <div class="col">
-          <div class="card border-0">
-            <img src="assets/images/slider-1.webp" class="card-img-top" alt="">
+    <div id="productCarousel" class="carousel slide" data-bs-touch="true">
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row g-3">
+
+            <!-- Product 1 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>BATA</small>
+                  <p class="mb-1">Sandal for Men</p>
+                  <div>
+                    <span class="price-old">Tk.1990</span>
+                    <span class="price-new">Tk.1490</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>NORTH STAR</small>
+                  <p class="mb-1">Canvas Shoe</p>
+                  <div>
+                    <span class="price-old">Tk.1890</span>
+                    <span class="price-new">Tk.1640</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>BATA</small>
+                  <p class="mb-1">Slip-on Sandal</p>
+                  <div>
+                    <span class="price-old">Tk.1990</span>
+                    <span class="price-new">Tk.1490</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>HUSH PUPPIES</small>
+                  <p class="mb-1">Formal Shoe</p>
+                  <div>
+                    <span class="price-old">Tk.15990</span>
+                    <span class="price-new">Tk.11990</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <div class="col">
-          <div class="card border-0">
-            <img src="assets/images/slider-2.webp" class="card-img-top" alt="">
+
+        <!-- Slide 2 (for mobile+sm view to keep carousel working nicely) -->
+        <div class="carousel-item">
+          <div class="row g-3">
+
+            <!-- Product 3 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>BATA</small>
+                  <p class="mb-1">Slip-on Sandal</p>
+                  <div>
+                    <span class="price-old">Tk.1990</span>
+                    <span class="price-new">Tk.1490</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>HUSH PUPPIES</small>
+                  <p class="mb-1">Formal Shoe</p>
+                  <div>
+                    <span class="price-old">Tk.15990</span>
+                    <span class="price-new">Tk.11990</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 1 -->
+            <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>BATA</small>
+                  <p class="mb-1">Sandal for Men</p>
+                  <div>
+                    <span class="price-old">Tk.1990</span>
+                    <span class="price-new">Tk.1490</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-12 col-sm-6 col-lg-3 d-none d-lg-block">
+              <div class="card product-card text-center p-3 h-100 position-relative">
+                <i class="bi bi-heart position-absolute top-0 end-0 m-2"></i>
+                <img src="assets/images/sandal.avif" class="card-img-top" alt="">
+                <div class="card-body">
+                  <small>NORTH STAR</small>
+                  <p class="mb-1">Canvas Shoe</p>
+                  <div>
+                    <span class="price-old">Tk.1890</span>
+                    <span class="price-new">Tk.1640</span>
+                  </div>
+                  <button class="btn btn-dark btn-sm mt-2 w-100 shop-btn">SHOP NOW</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <div class="col">
-          <div class="card border-0">
-            <img src="assets/images/slider-3.webp" class="card-img-top" alt="">
-          </div>
-        </div>
-        <div class="col">
-          <div class="card border-0">
-            <img src="assets/images/slider-4.webp" class="card-img-top" alt="">
-          </div>
-        </div>
+
       </div>
 
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+      </button>
     </div>
-  </section>
+  </div>
+</section>
+
+
+  <!-- car -->
 
   <!-- Bootstrap Bundle -->
   <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
