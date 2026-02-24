@@ -1,362 +1,834 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-  /* ---- Sidebar ---- */
-  .filter-title{
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:.6px;
-    color:#222;
-    margin:16px 0 10px;
-    text-transform:uppercase;
-  }
-  .filter-list label{
-    font-size:12px;
-    color:#444;
-    cursor:pointer;
-  }
-  .filter-list .form-check{ margin-bottom:6px; }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Make your way - Bata</title>
 
-  .color-dots{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-  }
-  .dot{
-    width:14px;height:14px;border-radius:50%;
-    border:1px solid #cfcfcf;
-    display:inline-block;
-    cursor:pointer;
-  }
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  /* ---- Top Bar ---- */
-  .topbar{
-    border-bottom:1px solid #eee;
-    padding-bottom:12px;
-    margin-bottom:18px;
-  }
-  .topbar small{ color:#666; }
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
 
-  .view-btn{
-    width:28px;height:28px;
-    border:1px solid #ddd;
-    background:#fff;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    font-size:14px;
-    cursor:pointer;
-  }
+  <!-- Bootstrap 5.3 (local) -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
-  /* ---- Product Cards ---- */
-  .p-card{
-    border:0;
-    background:#fff;
-    padding:12px 8px 16px;
-    transition:.2s ease;
-    height:100%;
-  }
-  .p-card:hover{
-    transform: translateY(-2px);
-  }
-  .p-img{
-    width:100%;
-    height:120px;
-    object-fit:contain;
-    display:block;
-    margin: 0 auto 10px;
-  }
-  .p-brand{
-    text-align:center;
-    font-size:11px;
-    letter-spacing:.7px;
-    color:#444;
-    margin-bottom:4px;
-  }
-  .p-name{
-    text-align:center;
-    font-size:11px;
-    color:#333;
-    line-height:1.35;
-    min-height:34px;
-    margin-bottom:6px;
-  }
-  .p-price{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    align-items:baseline;
-    font-size:12px;
-    margin-bottom:10px;
-  }
-  .old{
-    text-decoration:line-through;
-    color:#9a9a9a;
-    font-weight:600;
-  }
-  .new{
-    color:#d30000;
-    font-weight:800;
-  }
+  <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="/styles/style.css">
 
-  /* button */
-  .shop-btn{
-    display:block;
-    width:100%;
-    text-align:center;
-    background:#000;
-    color:#fff;
-    padding:9px 0;
-    text-decoration:none;
-    font-weight:800;
-    letter-spacing:.8px;
-    font-size:12px;
-    border-radius:0;
-    transition:.25s;
-  }
-  .shop-btn:hover{
-    background:#d30000;
-    color:#fff;
-  }
+</head>
 
-  /* make sidebar look like screenshot */
-  .sidebar{
-    border-right:1px solid #eee;
-    padding-right:18px;
-  }
+<body class="bg-white">
 
-  /* mobile */
-  @media (max-width: 991.98px){
-    .sidebar{ border-right:0; padding-right:0; border-bottom:1px solid #eee; padding-bottom:18px; margin-bottom:18px; }
-  }
-</style>
+  <!-- =============== HEADER =============== -->
+  <header class="border-bottom bg-white">
 
-<section class="py-4">
-  <div class="container">
+    <!-- TOP BAR -->
+    <div class="container-fluid px-3 py-2">
+      <div class="d-flex align-items-center justify-content-between">
 
-    <!-- breadcrumb like screenshot -->
-    <nav aria-label="breadcrumb" class="mb-2">
-      <ol class="breadcrumb small mb-0">
-        <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Home</a></li>
-        <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Eid Collection</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Bata Eid Collection</li>
-      </ol>
-    </nav>
+        <!-- LEFT -->
+        <div class="d-flex align-items-center gap-3">
 
-    <h6 class="fw-bold mb-3">BATA EID COLLECTION</h6>
+          <!-- Mobile: menu + search -->
+          <button class="btn p-0 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu" aria-label="Open menu">
+            <i class="bi bi-list fs-2"></i>
+          </button>
 
-    <div class="row g-4">
+          <button class="btn p-0 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSearch"
+            aria-controls="mobileSearch" aria-label="Open search">
+            <i class="bi bi-search fs-4"></i>
+          </button>
 
-      <!-- LEFT FILTERS -->
-      <aside class="col-lg-3 sidebar">
-
-        <div class="filter-title">Brand</div>
-        <div class="filter-list">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="b1">
-            <label class="form-check-label" for="b1">Bata</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="b2">
-            <label class="form-check-label" for="b2">Hush Puppies</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="b3">
-            <label class="form-check-label" for="b3">Adidas</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="b4">
-            <label class="form-check-label" for="b4">Weinbrenner</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="b5">
-            <label class="form-check-label" for="b5">North Star</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="b6">
-            <label class="form-check-label" for="b6">Power</label>
+          <!-- Desktop: left text -->
+          <div class="d-none d-lg-flex align-items-center gap-2 small text-uppercase">
+            <i class="bi bi-geo-alt"></i>
+            <span>FIND A STORE | CUSTOMER CARE: 09666200300</span>
           </div>
         </div>
 
-        <div class="filter-title">Gender</div>
-        <div class="filter-list">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="g1">
-            <label class="form-check-label" for="g1">Men</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="g2">
-            <label class="form-check-label" for="g2">Women</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="g3">
-            <label class="form-check-label" for="g3">Children</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="g4">
-            <label class="form-check-label" for="g4">Accessories</label>
-          </div>
-        </div>
+        <!-- CENTER LOGO -->
+        <a href="index.html" class="text-decoration-none">
+          <img src="assets/images/logo.png" alt="Bata" style="height: 34px; width: auto;">
+        </a>
 
-        <div class="filter-title">Color</div>
-        <div class="color-dots mb-2">
-          <span class="dot" style="background:#000"></span>
-          <span class="dot" style="background:#fff"></span>
-          <span class="dot" style="background:#d30000"></span>
-          <span class="dot" style="background:#1e73ff"></span>
-          <span class="dot" style="background:#00b894"></span>
-          <span class="dot" style="background:#f1c40f"></span>
-          <span class="dot" style="background:#8e44ad"></span>
-          <span class="dot" style="background:#e67e22"></span>
-          <span class="dot" style="background:#7f8c8d"></span>
-          <span class="dot" style="background:#6D4C41"></span>
-        </div>
+        <!-- RIGHT -->
+        <div class="d-flex align-items-center gap-3">
 
-        <div class="filter-title">Price</div>
-        <div class="filter-list">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="p1"><label class="form-check-label" for="p1">Under Tk 1000</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="p2"><label class="form-check-label" for="p2">Tk 1001 - Tk 1500</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="p3"><label class="form-check-label" for="p3">Tk 1501 - Tk 2000</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="p4"><label class="form-check-label" for="p4">Tk 2001 - Tk 3000</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="p5"><label class="form-check-label" for="p5">Tk 3001 - Tk 4000</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="p6"><label class="form-check-label" for="p6">Tk 4001 - Tk 5000</label></div>
-        </div>
+          <a class="btn p-0" href="#" aria-label="Account">
+            <i class="bi bi-person fs-4"></i>
+          </a>
 
-        <div class="filter-title">Size</div>
-        <div class="filter-list">
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="s1"><label class="form-check-label" for="s1">6</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="s2"><label class="form-check-label" for="s2">7</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="s3"><label class="form-check-label" for="s3">8</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="s4"><label class="form-check-label" for="s4">9</label></div>
-          <div class="form-check"><input class="form-check-input" type="checkbox" id="s5"><label class="form-check-label" for="s5">10</label></div>
-        </div>
+          <a class="btn p-0 d-none d-lg-inline-flex" href="#" aria-label="Wishlist">
+            <i class="bi bi-heart fs-5"></i>
+          </a>
 
-      </aside>
+          <a class="btn p-0 d-none d-lg-inline-flex" href="#" aria-label="WhatsApp">
+            <i class="bi bi-whatsapp fs-5 text-success"></i>
+          </a>
 
-      <!-- RIGHT PRODUCTS -->
-      <div class="col-lg-9">
+          <a class="btn position-relative p-0" href="#" aria-label="Cart">
+            <i class="bi bi-bag fs-4"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
+          </a>
 
-        <!-- TOP BAR -->
-        <div class="topbar d-flex flex-wrap gap-3 align-items-center justify-content-between">
-          <div class="d-flex align-items-center gap-2">
-            <small class="fw-semibold">VIEW AS</small>
-            <span class="view-btn">▦</span>
-            <span class="view-btn">≡</span>
-          </div>
-
-          <div class="d-flex align-items-center gap-3">
-            <div class="d-flex align-items-center gap-2">
-              <small class="fw-semibold">ITEMS PER PAGE</small>
-              <select class="form-select form-select-sm" style="width:70px;">
-                <option>24</option>
-                <option>36</option>
-                <option>48</option>
-              </select>
+          <!-- Desktop Search -->
+          <form class="d-none d-lg-block" role="search">
+            <div class="input-group input-group-sm">
+              <input class="form-control text-uppercase" type="search" placeholder="SEARCH" aria-label="Search">
+              <button class="btn btn-outline-dark" type="submit" aria-label="Submit search">
+                <i class="bi bi-search"></i>
+              </button>
             </div>
-
-            <div class="d-flex align-items-center gap-2">
-              <small class="fw-semibold">SORT BY</small>
-              <select class="form-select form-select-sm" style="width:160px;">
-                <option>Best sellers</option>
-                <option>Price: low to high</option>
-                <option>Price: high to low</option>
-                <option>Newest</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- GRID -->
-        <div class="row g-4">
-
-          <!-- CARD 1 -->
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">NORTH STAR</div>
-              <div class="p-name">NORTH STAR MENDES MENS CANVAS</div>
-              <div class="p-price"><span class="old">Tk 3,499</span><span class="new">Tk 2,624</span></div>
-              <a href="product1.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
-
-          <!-- CARD 2 -->
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">BATA (MEN)</div>
-              <div class="p-name">BATA (MEN) SURGE MENS CASUAL</div>
-              <div class="p-price"><span class="old">Tk 3,999</span><span class="new">Tk 2,999</span></div>
-              <a href="product2.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
-
-          <!-- CARD 3 -->
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">BATA (MEN)</div>
-              <div class="p-name">BATA (MEN) BOLTA MENS CASUAL</div>
-              <div class="p-price"><span class="old">Tk 3,499</span><span class="new">Tk 2,999</span></div>
-              <a href="product3.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
-
-          <!-- CARD 4 -->
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">WEINBRENNER</div>
-              <div class="p-name">WEINBRENNER OUTBACK</div>
-              <div class="p-price"><span class="old">Tk 4,999</span><span class="new">Tk 3,749</span></div>
-              <a href="product4.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
-
-          <!-- duplicate more cards as needed -->
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">BATA (MEN)</div>
-              <div class="p-name">FORMAL SLIP-ON</div>
-              <div class="p-price"><span class="old">Tk 2,999</span><span class="new">Tk 2,349</span></div>
-              <a href="product5.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">BATA (MEN)</div>
-              <div class="p-name">CASUAL LOAFER</div>
-              <div class="p-price"><span class="old">Tk 2,699</span><span class="new">Tk 2,199</span></div>
-              <a href="product6.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">WEINBRENNER</div>
-              <div class="p-name">TREKKING SNEAKER</div>
-              <div class="p-price"><span class="old">Tk 4,299</span><span class="new">Tk 3,799</span></div>
-              <a href="product7.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="p-card">
-              <img class="p-img" src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=60" alt="">
-              <div class="p-brand">BATA (MEN)</div>
-              <div class="p-name">SPORTS RUNNER</div>
-              <div class="p-price"><span class="old">Tk 3,199</span><span class="new">Tk 2,799</span></div>
-              <a href="product8.html" class="shop-btn">SHOP NOW</a>
-            </div>
-          </div>
+          </form>
 
         </div>
       </div>
+    </div>
 
+    <!-- DESKTOP NAV -->
+    <nav class="d-none d-lg-block border-top bata-desktop-nav">
+  <div class="container-fluid">
+    <ul class="nav justify-content-center gap-4 py-2 fw-semibold text-uppercase">
+
+      <li class="nav-item">
+        <a class="nav-link text-danger" href="eidcollection.html">Eid Collection</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="brands.html">Sneaker Studio</a>
+      </li>
+
+      <!-- BRANDS (simple dropdown list like screenshot) -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="brands.html" role="button" data-bs-toggle="dropdown">Brands</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-4">
+              <div class="col-lg-3">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Power</a></li>
+                  <li><a href="#">North star</a></li>
+                  <li><a href="#">Bata Red Label</a></li>
+                  <li><a href="#">Adidas</a></li>
+                  <li><a href="#">Bata</a></li>
+                  <li><a href="#">Comfit</a></li>
+                  <li><a href="#">Hush puppies</a></li>
+                  <li><a href="#">Weinbrenner</a></li>
+                  <li><a href="#">Scholl</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- MEN (mega menu) -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Men</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+
+              <div class="col-lg-3">
+                <div class="mega-title">All shoes</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Apparel</a></li>
+                  <li><a href="#">Casual Shoes</a></li>
+                  <li><a href="#">Formal Shoes</a></li>
+                  <li><a href="#">Mens Sandal</a></li>
+                  <li><a href="#">Mocassino</a></li>
+                  <li><a href="#">Sports</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Adidas</a></li>
+                  <li><a href="#">Ambassador</a></li>
+                  <li><a href="#">Bata</a></li>
+                  <li><a href="#">Bata Comfit</a></li>
+                  <li><a href="#">Bata Red Label</a></li>
+                  <li><a href="#">Hush Puppies</a></li>
+                  <li><a href="#">North Star</a></li>
+                  <li><a href="#">Power</a></li>
+                  <li><a href="#">Weinbrenner</a></li>
+                  <li><a href="#">Scholl</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By color</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Black</a></li>
+                  <li><a href="#">Blue</a></li>
+                  <li><a href="#">Brown</a></li>
+                  <li><a href="#">Gray</a></li>
+                  <li><a href="#">Green</a></li>
+                  <li><a href="#">Red</a></li>
+                  <li><a href="#">Pink</a></li>
+                  <li><a href="#">Yellow</a></li>
+                  <li><a href="#">White</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By price</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Under Tk.1000</a></li>
+                  <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                  <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                  <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                  <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                  <li><a href="#">Tk.4001 - Tk.5000</a></li>
+                  <li><a href="#">Above Tk.5000</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">By size</div>
+                <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 8</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 9</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 10</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 11</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- WOMEN -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Women</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+
+              <div class="col-lg-3">
+                <div class="mega-title">All shoes</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Apparel</a></li>
+                  <li><a href="#">Ladies Sandals</a></li>
+                  <li><a href="#">Ladies Heel</a></li>
+                  <li><a href="#">Ladies Sports Shoes</a></li>
+                  <li><a href="#">Ladies Casual & Formal Closed Shoes</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Bata</a></li>
+                  <li><a href="#">Bata Comfit</a></li>
+                  <li><a href="#">Bata Red Label</a></li>
+                  <li><a href="#">Power</a></li>
+                  <li><a href="#">Hush Puppies</a></li>
+                  <li><a href="#">North Star</a></li>
+                  <li><a href="#">Scholl</a></li>
+                  <li><a href="#">Adidas</a></li>
+                  <li><a href="#">Marie Claire</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By color</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Black</a></li>
+                  <li><a href="#">Blue</a></li>
+                  <li><a href="#">Brown</a></li>
+                  <li><a href="#">Gray</a></li>
+                  <li><a href="#">Green</a></li>
+                  <li><a href="#">Pink</a></li>
+                  <li><a href="#">Red</a></li>
+                  <li><a href="#">Yellow</a></li>
+                  <li><a href="#">White</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By price</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Under Tk.1000</a></li>
+                  <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                  <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                  <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                  <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                  <li><a href="#">Tk.4001 - Tk.5000</a></li>
+                  <li><a href="#">Above Tk.5000</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">By size</div>
+                <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 3</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 4</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- CHILDREN -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Children</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+
+              <div class="col-lg-3">
+                <div class="mega-title">Boys</div>
+                <ul class="mega-list mb-3">
+                  <li><a class="hot" href="#">Sandal</a></li>
+                  <li><a href="#">Sports</a></li>
+                  <li><a href="#">Kids' Casuals (Boys)</a></li>
+                </ul>
+
+                <div class="mega-title">Girls</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Sandal</a></li>
+                  <li><a href="#">Sports</a></li>
+                  <li><a href="#">Kids' Casuals (Girls)</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Bata</a></li>
+                  <li><a href="#">Weinbrenner</a></li>
+                  <li><a href="#">Bubblegummers</a></li>
+                  <li><a href="#">Power</a></li>
+                  <li><a href="#">Justice League</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By color</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Black</a></li>
+                  <li><a href="#">Blue</a></li>
+                  <li><a href="#">Brown</a></li>
+                  <li><a href="#">Gray</a></li>
+                  <li><a href="#">Green</a></li>
+                  <li><a href="#">Pink</a></li>
+                  <li><a href="#">Red</a></li>
+                  <li><a href="#">White</a></li>
+                  <li><a href="#">Yellow</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By price</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Under Tk.1000</a></li>
+                  <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                  <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                  <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                  <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                  <li><a href="#">Above Tk.5000</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">By size</div>
+                <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 1</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 2</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 3</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 4</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 8</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 9</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 10</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 11</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 12</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 13</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ACCESSORIES -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Accessories</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+              <div class="col-lg-3">
+                <div class="mega-title">Apparel</div>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">Bag</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Backpack</a></li>
+                  <li><a href="#">Ladies Handbags</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Adidas</a></li>
+                  <li><a href="#">Bata</a></li>
+                  <li><a href="#">Prive Roma</a></li>
+                  <li><a href="#">Marie Claire</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">Others</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Belts</a></li>
+                  <li><a href="#">Wallets</a></li>
+                  <li><a href="#">Shoe Care</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- BATA CLUB -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Bata Club</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <ul class="mega-list">
+                  <li><a href="#">Check your Bata Club points</a></li>
+                  <li><a href="#">Register Yourself</a></li>
+                  <li><a href="#">Bata Club Benefits</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column fw-semibold text-uppercase gap-2">
+        <li class="nav-item"><a class="nav-link text-danger" href="eidcollection.html">Eid Collection</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="brands.html">Sneaker Studio</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="eidcollection.html">Brands</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Men</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Women</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Children</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Accessories</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="#">Bata Club</a></li>
+      </ul>
     </div>
   </div>
-</section>
+
+  <!-- MOBILE SEARCH -->
+  <div class="offcanvas offcanvas-top" tabindex="-1" id="mobileSearch" aria-labelledby="mobileSearchLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="mobileSearchLabel">Search</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form role="search">
+        <div class="input-group">
+          <input class="form-control text-uppercase" type="search" placeholder="SEARCH" aria-label="Search">
+          <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <section class="py-4">
+    <div class="container">
+
+      <!-- breadcrumb like screenshot -->
+      <nav aria-label="breadcrumb" class="mb-2">
+        <ol class="breadcrumb small mb-0">
+          <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Home</a></li>
+          <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Eid Collection</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Bata Eid Collection</li>
+        </ol>
+      </nav>
+
+      <h6 class="fw-bold mb-3">BATA EID COLLECTION</h6>
+
+      <div class="row g-4">
+
+        <!-- LEFT FILTERS -->
+        <aside class="col-lg-3 sidebar">
+
+          <div class="filter-title">Brand</div>
+          <div class="filter-list">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="b1">
+              <label class="form-check-label" for="b1">Bata</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="b2">
+              <label class="form-check-label" for="b2">Hush Puppies</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="b3">
+              <label class="form-check-label" for="b3">Adidas</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="b4">
+              <label class="form-check-label" for="b4">Weinbrenner</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="b5">
+              <label class="form-check-label" for="b5">North Star</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="b6">
+              <label class="form-check-label" for="b6">Power</label>
+            </div>
+          </div>
+
+          <div class="filter-title">Gender</div>
+          <div class="filter-list">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="g1">
+              <label class="form-check-label" for="g1">Men</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="g2">
+              <label class="form-check-label" for="g2">Women</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="g3">
+              <label class="form-check-label" for="g3">Children</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="g4">
+              <label class="form-check-label" for="g4">Accessories</label>
+            </div>
+          </div>
+
+          <div class="filter-title">Color</div>
+          <div class="color-dots mb-2">
+            <span class="dot" style="background:#000"></span>
+            <span class="dot" style="background:#fff"></span>
+            <span class="dot" style="background:#d30000"></span>
+            <span class="dot" style="background:#1e73ff"></span>
+            <span class="dot" style="background:#00b894"></span>
+            <span class="dot" style="background:#f1c40f"></span>
+            <span class="dot" style="background:#8e44ad"></span>
+            <span class="dot" style="background:#e67e22"></span>
+            <span class="dot" style="background:#7f8c8d"></span>
+            <span class="dot" style="background:#6D4C41"></span>
+          </div>
+
+          <div class="filter-title">Price</div>
+          <div class="filter-list">
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="p1"><label
+                class="form-check-label" for="p1">Under Tk 1000</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="p2"><label
+                class="form-check-label" for="p2">Tk 1001 - Tk 1500</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="p3"><label
+                class="form-check-label" for="p3">Tk 1501 - Tk 2000</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="p4"><label
+                class="form-check-label" for="p4">Tk 2001 - Tk 3000</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="p5"><label
+                class="form-check-label" for="p5">Tk 3001 - Tk 4000</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="p6"><label
+                class="form-check-label" for="p6">Tk 4001 - Tk 5000</label></div>
+          </div>
+
+          <div class="filter-title">Size</div>
+          <div class="filter-list">
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="s1"><label
+                class="form-check-label" for="s1">6</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="s2"><label
+                class="form-check-label" for="s2">7</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="s3"><label
+                class="form-check-label" for="s3">8</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="s4"><label
+                class="form-check-label" for="s4">9</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="s5"><label
+                class="form-check-label" for="s5">10</label></div>
+          </div>
+
+        </aside>
+
+        <!-- RIGHT PRODUCTS -->
+        <div class="col-lg-9">
+
+          <!-- TOP BAR -->
+          <div class="topbar d-flex flex-wrap gap-3 align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <small class="fw-semibold">VIEW AS</small>
+              <span class="view-btn">▦</span>
+              <span class="view-btn">≡</span>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center gap-2">
+                <small class="fw-semibold">ITEMS PER PAGE</small>
+                <select class="form-select form-select-sm" style="width:70px;">
+                  <option>24</option>
+                  <option>36</option>
+                  <option>48</option>
+                </select>
+              </div>
+
+              <div class="d-flex align-items-center gap-2">
+                <small class="fw-semibold">SORT BY</small>
+                <select class="form-select form-select-sm" style="width:160px;">
+                  <option>Best sellers</option>
+                  <option>Price: low to high</option>
+                  <option>Price: high to low</option>
+                  <option>Newest</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- GRID -->
+          <div class="row g-4">
+
+            <!-- CARD 1 -->
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">NORTH STAR</div>
+                <div class="p-name">NORTH STAR MENDES MENS CANVAS</div>
+                <div class="p-price"><span class="old">Tk 3,499</span><span class="new">Tk 2,624</span></div>
+                <a href="product1.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">BATA (MEN)</div>
+                <div class="p-name">BATA (MEN) SURGE MENS CASUAL</div>
+                <div class="p-price"><span class="old">Tk 3,999</span><span class="new">Tk 2,999</span></div>
+                <a href="product2.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">BATA (MEN)</div>
+                <div class="p-name">BATA (MEN) BOLTA MENS CASUAL</div>
+                <div class="p-price"><span class="old">Tk 3,499</span><span class="new">Tk 2,999</span></div>
+                <a href="product3.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">WEINBRENNER</div>
+                <div class="p-name">WEINBRENNER OUTBACK</div>
+                <div class="p-price"><span class="old">Tk 4,999</span><span class="new">Tk 3,749</span></div>
+                <a href="product4.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+            <!-- duplicate more cards as needed -->
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">BATA (MEN)</div>
+                <div class="p-name">FORMAL SLIP-ON</div>
+                <div class="p-price"><span class="old">Tk 2,999</span><span class="new">Tk 2,349</span></div>
+                <a href="product5.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">BATA (MEN)</div>
+                <div class="p-name">CASUAL LOAFER</div>
+                <div class="p-price"><span class="old">Tk 2,699</span><span class="new">Tk 2,199</span></div>
+                <a href="product6.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">WEINBRENNER</div>
+                <div class="p-name">TREKKING SNEAKER</div>
+                <div class="p-price"><span class="old">Tk 4,299</span><span class="new">Tk 3,799</span></div>
+                <a href="product7.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6">
+              <div class="p-card">
+                <img class="p-img"
+                  src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=600&q=60"
+                  alt="">
+                <div class="p-brand">BATA (MEN)</div>
+                <div class="p-name">SPORTS RUNNER</div>
+                <div class="p-price"><span class="old">Tk 3,199</span><span class="new">Tk 2,799</span></div>
+                <a href="product8.html" class="shop-btn">SHOP NOW</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bata-footer pt-5 pb-4">
+    <div class="container">
+
+      <!-- Top links -->
+      <div class="row g-4">
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h6 class="footer-title">ABOUT</h6>
+          <ul class="footer-list">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Awards &amp; Recognition</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Bata Franchise</a></li>
+            <li><a href="#">Share Department</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h6 class="footer-title">INFORMATION</h6>
+          <ul class="footer-list">
+            <li><a href="#">TERMS &amp; CONDITIONS</a></li>
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Franchise Programme</a></li>
+            <li><a href="#">Coverage areas</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h6 class="footer-title">POPULAR BRANDS</h6>
+          <ul class="footer-list">
+            <li><a href="#">Bata</a></li>
+            <li><a href="#">Hush Puppies</a></li>
+            <li><a href="#">Power</a></li>
+            <li><a href="#">Comfit</a></li>
+            <li><a href="#">Weinbrenner</a></li>
+            <li><a href="#">North Star</a></li>
+            <li><a href="#">Marie Claire</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <h6 class="footer-title">CUSTOMER SERVICE</h6>
+          <ul class="footer-list">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">MyBata</a></li>
+            <li><a href="#">Bata Stores</a></li>
+            <li><a href="#">All About Feet</a></li>
+            <li><a href="#">Contact Info</a></li>
+            <li><a href="#">Report Issue</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-8 col-lg-4">
+          <h6 class="footer-title">INFO</h6>
+          <div class="footer-text">
+            <p class="mb-2">Bata Shoe Company Bangladesh Ltd.</p>
+            <p class="mb-3">Tongi Gazipur, Bangladesh.</p>
+            <p class="mb-2">Call us at: 09666200300 (9am-9pm)</p>
+            <p class="mb-0">Email: bd.customercare@bata.com</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <hr class="footer-divider my-4">
+
+      <!-- Bottom row -->
+      <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+
+        <div class="fw-semibold footer-newsletter">Sign up for our Newsletter</div>
+
+        <div class="d-flex align-items-center gap-3 ms-md-auto">
+          <a class="footer-social" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a class="footer-social" href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a class="footer-social" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a class="footer-social" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+
+
+        </div>
+      </div>
+      <br class="my-5">
+
+      <!-- Copyright -->
+      <div class="text-center footer-copy mt-5">
+        © 2024 Bata Shoe Company Bangladesh Ltd. Tongi, Postal code - 1710, Gazipur, Bangladesh
+      </div>
+
+      <!-- Payment icons -->
+      <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+        <div class="pay-box">VISA</div>
+        <div class="pay-box">MC</div>
+        <div class="pay-box">AMEX</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle -->
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,1074 +1,1024 @@
-<!-- Bootstrap 5.3 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-<style>
-    .act-card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0;
-        background: #eee;
-        height: 100%;
-    }
-
-    .act-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transform: scale(1.02);
-    }
-
-    .act-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, .35), rgba(0, 0, 0, 0) 55%);
-    }
-
-    .act-content {
-        position: absolute;
-        left: 18px;
-        bottom: 16px;
-        color: #fff;
-    }
-
-    .act-title {
-        margin: 0 0 8px;
-        font-weight: 800;
-        letter-spacing: .2px;
-        line-height: 1.05;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, .35);
-    }
-
-    .act-title.big {
-        font-size: 20px;
-    }
-
-    .act-title.mid {
-        font-size: 18px;
-    }
-
-    .act-title.sm {
-        font-size: 18px;
-    }
-
-    .act-btn {
-        font-size: 11px;
-        padding: 4px 10px;
-        border: 0;
-        border-radius: 0;
-        background: #fff;
-        color: #111;
-    }
-
-    .act-icons {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        background: #fff;
-        border: 1px solid #eee;
-    }
-
-    .icon-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        padding: 8px 10px 0;
-    }
-
-    .icon-grid img {
-        width: 56px;
-        height: auto;
-        opacity: .75;
-    }
-
-    .act-showall {
-        font-size: 11px;
-        padding: 6px 12px;
-        border-radius: 0;
-        background: transparent;
-        border: 1px solid #111;
-    }
-
-    /* fixed heights to match screenshot proportions */
-    .h-big {
-        min-height: 255px;
-    }
-
-    .h-top {
-        min-height: 255px;
-    }
-
-    .h-sm {
-        min-height: 175px;
-    }
-
-    .h-icons {
-        min-height: 175px;
-    }
-
-    .ss-title {
-        display: flex;
-        align-items: baseline;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .ss-bata {
-        color: #d30000;
-        font-weight: 800;
-        font-style: italic;
-        letter-spacing: .3px;
-        line-height: 1;
-        font-size: clamp(28px, 3.2vw, 44px);
-    }
-
-    .ss-sub {
-        font-weight: 800;
-        letter-spacing: .3px;
-        line-height: 1;
-        font-size: clamp(22px, 2.4vw, 36px);
-    }
-
-    .ss-desc {
-        max-width: 860px;
-        margin: 10px auto 0;
-        color: #6b6b6b;
-        font-size: 13px;
-        line-height: 1.6;
-    }
-
-    .ss-line2 {
-        margin-top: 14px;
-        font-size: 13px;
-        font-weight: 600;
-        color: #333;
-    }
-
-    .ss-hash {
-        color: #d30000;
-        font-weight: 700;
-    }
-
-    .tr-title {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 14px;
-    }
-
-    .tr-title h6 {
-        margin: 0;
-        font-weight: 600;
-    }
-
-    .tr-arrow {
-        width: 34px;
-        height: 34px;
-        border: 0;
-        background: transparent;
-        font-size: 26px;
-        line-height: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #111;
-    }
-
-    .tr-card {
-        border: 1px solid #eee;
-        background: #fff;
-        height: 100%;
-    }
-
-    .tr-card .pad {
-        padding: 18px;
-    }
-
-    .tr-feature {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 420px;
-    }
-
-    .tr-heart {
-        position: absolute;
-        right: 18px;
-        top: 18px;
-        font-size: 22px;
-        color: #111;
-        opacity: .8;
-    }
-
-    .tr-img {
-        width: 100%;
-        max-height: 220px;
-        object-fit: contain;
-        display: block;
-        margin: 18px auto 0;
-    }
-
-    .sizes {
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-        font-size: 12px;
-        color: #333;
-        margin-top: 8px;
-    }
-
-    .meta {
-        text-align: center;
-        margin-top: 14px;
-        font-size: 12px;
-        letter-spacing: .6px;
-        color: #333;
-    }
-
-    .name {
-        text-align: center;
-        font-size: 13px;
-        color: #222;
-        margin: 8px 0 10px;
-        line-height: 1.35;
-        min-height: 40px;
-    }
-
-    .price {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        align-items: baseline;
-        margin-top: 6px;
-    }
-
-    .old {
-        color: #9b9b9b;
-        text-decoration: line-through;
-        font-weight: 600;
-    }
-
-    .new {
-        color: #d30000;
-        font-weight: 800;
-    }
-
-    .shop-btn {
-        width: 100%;
-        border-radius: 0;
-        border: 0;
-        background: #000;
-        color: #fff;
-        font-weight: 800;
-        letter-spacing: 1px;
-        padding: 12px 0;
-        margin-top: 14px;
-    }
-
-    /* product columns (right side) */
-    .pcol {
-        padding: 0 12px;
-        text-align: center;
-    }
-
-    .pimg {
-        width: 100%;
-        max-height: 180px;
-        object-fit: contain;
-        display: block;
-        margin: 18px auto 10px;
-    }
-
-    .pbrand {
-        font-size: 12px;
-        letter-spacing: .6px;
-        color: #333;
-        margin-bottom: 6px;
-    }
-
-    .pname {
-        font-size: 13px;
-        color: #222;
-        line-height: 1.35;
-        min-height: 40px;
-        margin-bottom: 10px;
-    }
-
-    .pprice {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        align-items: baseline;
-        margin-top: 4px;
-    }
-
-    .tr-title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-
-    .tr-arrow {
-        font-size: 28px;
-        border: none;
-        background: none;
-    }
-
-    .tr-card {
-        border: 1px solid #eee;
-        background: #fff;
-        height: 100%;
-    }
-
-    .tr-img,
-    .pimg {
-        width: 100%;
-        max-height: 200px;
-        object-fit: contain;
-        display: block;
-        margin: auto;
-    }
-
-    .meta,
-    .pbrand {
-        text-align: center;
-        font-size: 12px;
-        margin-top: 10px;
-    }
-
-    .name,
-    .pname {
-        text-align: center;
-        font-size: 13px;
-        margin: 8px 0;
-        min-height: 40px;
-    }
-
-    .price,
-    .pprice {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    .old {
-        text-decoration: line-through;
-        color: #888;
-    }
-
-    .new {
-        color: #d30000;
-        font-weight: 700;
-    }
-
-    /* BUTTON */
-    .shop-btn {
-        display: block;
-        width: 100%;
-        text-align: center;
-        background: #000;
-        color: #fff;
-        padding: 10px 0;
-        text-decoration: none;
-        font-weight: 700;
-        margin-top: 12px;
-        transition: .3s;
-    }
-
-    .shop-btn:hover {
-        background: #d30000;
-        color: #fff;
-    }
-
-    .sizes {
-        text-align: center;
-        font-size: 12px;
-        margin-top: 5px;
-        letter-spacing: 3px;
-    }
-
-    .heart {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 20px;
-    }
-
-    .ws-card {
-        position: relative;
-        overflow: hidden;
-        background: #eee;
-        border-radius: 0;
-        height: 360px;
-        /* similar height like screenshot */
-    }
-
-    .ws-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transform: scale(1.02);
-    }
-
-    .ws-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, .45), rgba(0, 0, 0, 0) 58%);
-    }
-
-    .ws-content {
-        position: absolute;
-        left: 22px;
-        bottom: 18px;
-        color: #fff;
-    }
-
-    .ws-title {
-        font-size: 34px;
-        font-weight: 900;
-        letter-spacing: .2px;
-        line-height: 1;
-        margin: 0 0 12px;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, .35);
-    }
-
-    .ws-btn {
-        display: inline-block;
-        background: #fff;
-        color: #111;
-        text-decoration: none;
-        font-size: 12px;
-        padding: 7px 16px;
-        border-radius: 0;
-        border: 0;
-        transition: .25s ease;
-    }
-
-    .ws-btn:hover {
-        background: #d30000;
-        /* red hover */
-        color: #fff;
-    }
-
-    .brand-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .brand-header h6 {
-        margin: 0;
-        font-weight: 600;
-    }
-
-    .brand-arrows button {
-        border: none;
-        background: none;
-        font-size: 22px;
-        margin-left: 8px;
-        cursor: pointer;
-    }
-
-    .brand-box {
-        background: #f3f3f3;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.3s;
-    }
-
-    .brand-box img {
-        max-height: 40px;
-        opacity: 0.8;
-    }
-
-    .brand-box:hover {
-        background: #e9e9e9;
-        transform: translateY(-3px);
-    }
-
-    .ss-wide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .ss-card {
-        background: #fff;
-        border: 0;
-        height: 100%;
-    }
-
-    .ss-imgbox {
-        overflow: hidden;
-        background: #eee;
-    }
-
-    .ss-imgbox img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .ss-text {
-        padding: 22px 18px;
-    }
-
-    .ss-title {
-        font-weight: 700;
-        font-size: 14px;
-        margin-bottom: 10px;
-        color: #222;
-    }
-
-    .ss-desc {
-        color: #666;
-        font-size: 12px;
-        line-height: 1.6;
-        margin-bottom: 14px;
-        max-width: 360px;
-    }
-
-    .ss-btn {
-        display: inline-block;
-        padding: 7px 14px;
-        font-size: 12px;
-        border: 1px solid #111;
-        color: #111;
-        text-decoration: none;
-        background: transparent;
-        border-radius: 0;
-        transition: .25s ease;
-    }
-
-    .ss-btn:hover {
-        background: #d30000;
-        border-color: #d30000;
-        color: #fff;
-    }
-
-    /* sizes to match screenshot proportions */
-    .h-banner {
-        height: 250px;
-    }
-
-    .h-rowimg {
-        height: 220px;
-    }
-
-    .feature-box{
-    text-align:center;
-    padding:30px 10px;
-  }
-
-  .feature-icon{
-    width:90px;
-    height:90px;
-    margin:0 auto 18px;
-  }
-
-  .feature-icon img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-  }
-
-  .feature-title{
-    font-size:12px;
-    letter-spacing:1px;
-    color:#444;
-    line-height:1.6;
-  }
-
-  /* spacing like screenshot */
-  .feature-section{
-    background:#fff;
-    padding:40px 0;
-  }
-
-    @media (max-width: 991.98px) {
-        .h-banner {
-            height: 200px;
-        }
-
-        .h-rowimg {
-            height: 200px;
-        }
-
-        .ss-desc {
-            max-width: 100%;
-        }
-    }
-
-    @media (max-width: 991.98px) {
-        .ws-card {
-            height: 300px;
-        }
-
-        .ws-title {
-            font-size: 28px;
-        }
-    }
-
-    /* responsive: stack nicely */
-    @media (max-width: 991.98px) {
-        .tr-feature {
-            min-height: auto;
-        }
-
-        .pcol {
-            padding: 0 8px;
-        }
-    }
-</style>
-
-<section class="py-4">
-    <div class="container">
-        <div class="text-center">
-
-            <div class="ss-title">
-                <span class="ss-bata">Bata</span>
-                <span class="ss-sub">Sneaker Studio</span>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make your way - Bata</title>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 (local) -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/style.css">
+
+</head>
+
+
+<body class="bg-white">
+
+    <!-- =============== HEADER =============== -->
+    <header class="border-bottom bg-white">
+
+        <!-- TOP BAR -->
+        <div class="container-fluid px-3 py-2">
+            <div class="d-flex align-items-center justify-content-between">
+
+                <!-- LEFT -->
+                <div class="d-flex align-items-center gap-3">
+
+                    <!-- Mobile: menu + search -->
+                    <button class="btn p-0 d-lg-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#mobileMenu" aria-controls="mobileMenu" aria-label="Open menu">
+                        <i class="bi bi-list fs-2"></i>
+                    </button>
+
+                    <button class="btn p-0 d-lg-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#mobileSearch" aria-controls="mobileSearch" aria-label="Open search">
+                        <i class="bi bi-search fs-4"></i>
+                    </button>
+
+                    <!-- Desktop: left text -->
+                    <div class="d-none d-lg-flex align-items-center gap-2 small text-uppercase">
+                        <i class="bi bi-geo-alt"></i>
+                        <span>FIND A STORE | CUSTOMER CARE: 09666200300</span>
+                    </div>
+                </div>
+
+                <!-- CENTER LOGO -->
+                <a href="index.html" class="text-decoration-none">
+                    <img src="assets/images/logo.png" alt="Bata" style="height: 34px; width: auto;">
+                </a>
+
+                <!-- RIGHT -->
+                <div class="d-flex align-items-center gap-3">
+
+                    <a class="btn p-0" href="#" aria-label="Account">
+                        <i class="bi bi-person fs-4"></i>
+                    </a>
+
+                    <a class="btn p-0 d-none d-lg-inline-flex" href="#" aria-label="Wishlist">
+                        <i class="bi bi-heart fs-5"></i>
+                    </a>
+
+                    <a class="btn p-0 d-none d-lg-inline-flex" href="#" aria-label="WhatsApp">
+                        <i class="bi bi-whatsapp fs-5 text-success"></i>
+                    </a>
+
+                    <a class="btn position-relative p-0" href="#" aria-label="Cart">
+                        <i class="bi bi-bag fs-4"></i>
+                        <span
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark">0</span>
+                    </a>
+
+                    <!-- Desktop Search -->
+                    <form class="d-none d-lg-block" role="search">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control text-uppercase" type="search" placeholder="SEARCH"
+                                aria-label="Search">
+                            <button class="btn btn-outline-dark" type="submit" aria-label="Submit search">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
             </div>
+        </div>
 
-            <p class="ss-desc mb-0">
-                Every occasion deserves a different look. A stylish one for a movie date, a powerful one for a
-                morning run and a casual one for a meetup with friends. Sneaker Studio at Bata is where you can
-                ace them all.
-            </p>
+        <!-- DESKTOP NAV -->
+        <nav class="d-none d-lg-block border-top bata-desktop-nav">
+            <div class="container-fluid">
+                <ul class="nav justify-content-center gap-4 py-2 fw-semibold text-uppercase">
 
-            <div class="ss-line2">
-                Choose from over 500+ sneakers styles from 14 brands.
-                <span class="ss-hash">#batasneakerstudio</span>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="eidcollection.html">Eid Collection</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="brands.html">Sneaker Studio</a>
+                    </li>
+
+                    <!-- BRANDS (simple dropdown list like screenshot) -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="brands.html" role="button"
+                            data-bs-toggle="dropdown">Brands</a>
+                        <div class="dropdown-menu">
+                            <div class="container">
+                                <div class="row g-4">
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">Brands</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Power</a></li>
+                                            <li><a href="#">North star</a></li>
+                                            <li><a href="#">Bata Red Label</a></li>
+                                            <li><a href="#">Adidas</a></li>
+                                            <li><a href="#">Bata</a></li>
+                                            <li><a href="#">Comfit</a></li>
+                                            <li><a href="#">Hush puppies</a></li>
+                                            <li><a href="#">Weinbrenner</a></li>
+                                            <li><a href="#">Scholl</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- MEN (mega menu) -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Men</a>
+                        <div class="dropdown-menu">
+                            <div class="container">
+                                <div class="row g-5">
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">All shoes</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Apparel</a></li>
+                                            <li><a href="#">Casual Shoes</a></li>
+                                            <li><a href="#">Formal Shoes</a></li>
+                                            <li><a href="#">Mens Sandal</a></li>
+                                            <li><a href="#">Mocassino</a></li>
+                                            <li><a href="#">Sports</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">Brands</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Adidas</a></li>
+                                            <li><a href="#">Ambassador</a></li>
+                                            <li><a href="#">Bata</a></li>
+                                            <li><a href="#">Bata Comfit</a></li>
+                                            <li><a href="#">Bata Red Label</a></li>
+                                            <li><a href="#">Hush Puppies</a></li>
+                                            <li><a href="#">North Star</a></li>
+                                            <li><a href="#">Power</a></li>
+                                            <li><a href="#">Weinbrenner</a></li>
+                                            <li><a href="#">Scholl</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">By color</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Black</a></li>
+                                            <li><a href="#">Blue</a></li>
+                                            <li><a href="#">Brown</a></li>
+                                            <li><a href="#">Gray</a></li>
+                                            <li><a href="#">Green</a></li>
+                                            <li><a href="#">Red</a></li>
+                                            <li><a href="#">Pink</a></li>
+                                            <li><a href="#">Yellow</a></li>
+                                            <li><a href="#">White</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">By price</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Under Tk.1000</a></li>
+                                            <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                                            <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                                            <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                                            <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                                            <li><a href="#">Tk.4001 - Tk.5000</a></li>
+                                            <li><a href="#">Above Tk.5000</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">By size</div>
+                                        <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 8</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 9</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 10</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 11</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- WOMEN -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Women</a>
+                        <div class="dropdown-menu">
+                            <div class="container">
+                                <div class="row g-5">
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">All shoes</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Apparel</a></li>
+                                            <li><a href="#">Ladies Sandals</a></li>
+                                            <li><a href="#">Ladies Heel</a></li>
+                                            <li><a href="#">Ladies Sports Shoes</a></li>
+                                            <li><a href="#">Ladies Casual & Formal Closed Shoes</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">Brands</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Bata</a></li>
+                                            <li><a href="#">Bata Comfit</a></li>
+                                            <li><a href="#">Bata Red Label</a></li>
+                                            <li><a href="#">Power</a></li>
+                                            <li><a href="#">Hush Puppies</a></li>
+                                            <li><a href="#">North Star</a></li>
+                                            <li><a href="#">Scholl</a></li>
+                                            <li><a href="#">Adidas</a></li>
+                                            <li><a href="#">Marie Claire</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">By color</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Black</a></li>
+                                            <li><a href="#">Blue</a></li>
+                                            <li><a href="#">Brown</a></li>
+                                            <li><a href="#">Gray</a></li>
+                                            <li><a href="#">Green</a></li>
+                                            <li><a href="#">Pink</a></li>
+                                            <li><a href="#">Red</a></li>
+                                            <li><a href="#">Yellow</a></li>
+                                            <li><a href="#">White</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">By price</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Under Tk.1000</a></li>
+                                            <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                                            <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                                            <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                                            <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                                            <li><a href="#">Tk.4001 - Tk.5000</a></li>
+                                            <li><a href="#">Above Tk.5000</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">By size</div>
+                                        <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 3</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 4</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- CHILDREN -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Children</a>
+                        <div class="dropdown-menu">
+                            <div class="container">
+                                <div class="row g-5">
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">Boys</div>
+                                        <ul class="mega-list mb-3">
+                                            <li><a class="hot" href="#">Sandal</a></li>
+                                            <li><a href="#">Sports</a></li>
+                                            <li><a href="#">Kids' Casuals (Boys)</a></li>
+                                        </ul>
+
+                                        <div class="mega-title">Girls</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Sandal</a></li>
+                                            <li><a href="#">Sports</a></li>
+                                            <li><a href="#">Kids' Casuals (Girls)</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">Brands</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Bata</a></li>
+                                            <li><a href="#">Weinbrenner</a></li>
+                                            <li><a href="#">Bubblegummers</a></li>
+                                            <li><a href="#">Power</a></li>
+                                            <li><a href="#">Justice League</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">By color</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Black</a></li>
+                                            <li><a href="#">Blue</a></li>
+                                            <li><a href="#">Brown</a></li>
+                                            <li><a href="#">Gray</a></li>
+                                            <li><a href="#">Green</a></li>
+                                            <li><a href="#">Pink</a></li>
+                                            <li><a href="#">Red</a></li>
+                                            <li><a href="#">White</a></li>
+                                            <li><a href="#">Yellow</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-2">
+                                        <div class="mega-title">By price</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Under Tk.1000</a></li>
+                                            <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                                            <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                                            <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                                            <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                                            <li><a href="#">Above Tk.5000</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">By size</div>
+                                        <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 1</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 2</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 3</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 4</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 8</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 9</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 10</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 11</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 12</a>
+                                        <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 13</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- ACCESSORIES -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Accessories</a>
+                        <div class="dropdown-menu">
+                            <div class="container">
+                                <div class="row g-5">
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">Apparel</div>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">Bag</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Backpack</a></li>
+                                            <li><a href="#">Ladies Handbags</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">Brands</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Adidas</a></li>
+                                            <li><a href="#">Bata</a></li>
+                                            <li><a href="#">Prive Roma</a></li>
+                                            <li><a href="#">Marie Claire</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-lg-3">
+                                        <div class="mega-title">Others</div>
+                                        <ul class="mega-list">
+                                            <li><a class="hot" href="#">Belts</a></li>
+                                            <li><a href="#">Wallets</a></li>
+                                            <li><a href="#">Shoe Care</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- BATA CLUB -->
+                    <li class="nav-item dropdown position-static">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Bata
+                            Club</a>
+                        <div class="dropdown-menu">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <ul class="mega-list">
+                                            <li><a href="#">Check your Bata Club points</a></li>
+                                            <li><a href="#">Register Yourself</a></li>
+                                            <li><a href="#">Bata Club Benefits</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
             </div>
+        </nav>
 
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column fw-semibold text-uppercase gap-2">
+                <li class="nav-item"><a class="nav-link text-danger" href="eidcollection.html">Eid Collection</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="brands.html">Sneaker Studio</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="eidcollection.html">Brands</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#">Men</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#">Women</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#">Children</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#">Accessories</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="#">Bata Club</a></li>
+            </ul>
         </div>
     </div>
-</section>
 
-<section class="py-4">
-    <div class="container">
-        <h6 class="mb-3 fw-semibold">What's your activity?</h6>
-
-        <div class="row g-3">
-
-            <!-- LEFT BIG -->
-            <div class="col-lg-8">
-                <div class="act-card h-big">
-                    <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=1200&q=60"
-                        alt="Outdoors">
-                    <div class="act-overlay"></div>
-                    <div class="act-content">
-                        <h5 class="act-title big">Exploring the Outdoors</h5>
-                        <button class="act-btn">Shop Now</button>
-                    </div>
+    <!-- MOBILE SEARCH -->
+    <div class="offcanvas offcanvas-top" tabindex="-1" id="mobileSearch" aria-labelledby="mobileSearchLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="mobileSearchLabel">Search</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form role="search">
+                <div class="input-group">
+                    <input class="form-control text-uppercase" type="search" placeholder="SEARCH" aria-label="Search">
+                    <button class="btn btn-dark" type="submit"><i class="bi bi-search"></i></button>
                 </div>
-            </div>
-
-            <!-- RIGHT TOP -->
-            <div class="col-lg-4">
-                <div class="act-card h-top">
-                    <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=900&q=60"
-                        alt="Everyday">
-                    <div class="act-overlay"></div>
-                    <div class="act-content">
-                        <h5 class="act-title mid">Everyday<br>Living</h5>
-                        <button class="act-btn">Shop Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BOTTOM LEFT (RUNNING) -->
-            <div class="col-lg-4 col-6">
-                <div class="act-card h-sm">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=60"
-                        alt="Running">
-                    <div class="act-overlay"></div>
-                    <div class="act-content">
-                        <h5 class="act-title sm">Running</h5>
-                        <button class="act-btn">Shop Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BOTTOM MID (WALKING) -->
-            <div class="col-lg-4 col-6">
-                <div class="act-card h-sm">
-                    <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=900&q=60"
-                        alt="Walking">
-                    <div class="act-overlay"></div>
-                    <div class="act-content">
-                        <h5 class="act-title sm">Walking</h5>
-                        <button class="act-btn">Shop Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ICONS + BUTTON -->
-            <div class="col-lg-4">
-                <div class="act-icons h-icons">
-                    <div class="icon-grid">
-                        <!-- use your own sneaker svg/png icons -->
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                        <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
-                    </div>
-
-                    <button class="act-showall">Show All Sneakers</button>
-                </div>
-            </div>
-
+            </form>
         </div>
     </div>
-</section>
-<section class="py-4">
-    <div class="container">
 
-        <!-- TITLE -->
-        <div class="tr-title">
-            <h6 class="fw-semibold">Trending now</h6>
-            <button class="tr-arrow">›</button>
+   
+
+
+    <section class="py-4">
+        <div class="container">
+            <div class="text-center">
+
+                <div class="ss-title">
+                    <span class="ss-bata">Bata</span>
+                    <span class="ss-sub">Sneaker Studio</span>
+                </div>
+
+                <p class="ss-desc mb-0">
+                    Every occasion deserves a different look. A stylish one for a movie date, a powerful one for a
+                    morning run and a casual one for a meetup with friends. Sneaker Studio at Bata is where you can
+                    ace them all.
+                </p>
+
+                <div class="ss-line2">
+                    Choose from over 500+ sneakers styles from 14 brands.
+                    <span class="ss-hash">#batasneakerstudio</span>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="row g-3">
+    <section class="py-4">
+        <div class="container">
+            <h6 class="mb-3 fw-semibold">What's your activity?</h6>
 
-            <!-- FEATURED -->
-            <div class="col-lg-3">
-                <div class="tr-card p-3 position-relative">
+            <div class="row g-3">
 
-                    <span class="heart">♡</span>
-
-                    <img class="tr-img" src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8" />
-
-                    <div class="sizes">7 8 9 10</div>
-
-                    <div class="meta">NORTH STAR</div>
-                    <div class="name">NORTH STAR MENS CANVAS</div>
-
-                    <div class="price">
-                        <span class="old">Tk 3,499</span>
-                        <span class="new">Tk 2,624</span>
-                    </div>
-
-                    <a href="product1.html" class="shop-btn">SHOP NOW</a>
-                </div>
-            </div>
-
-            <!-- PRODUCT 1 -->
-            <div class="col-lg-3 col-6">
-                <div class="tr-card p-3">
-                    <img class="pimg" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" />
-
-                    <div class="pbrand">BATA (MEN)</div>
-                    <div class="pname">SURGE MENS CASUAL</div>
-
-                    <div class="pprice">
-                        <span class="old">Tk 3,999</span>
-                        <span class="new">Tk 2,999</span>
-                    </div>
-
-                    <a href="product2.html" class="shop-btn">SHOP NOW</a>
-                </div>
-            </div>
-
-            <!-- PRODUCT 2 -->
-            <div class="col-lg-3 col-6">
-                <div class="tr-card p-3">
-                    <img class="pimg" src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8" />
-
-                    <div class="pbrand">BATA (MEN)</div>
-                    <div class="pname">SURGE MENS CASUAL</div>
-
-                    <div class="pprice">
-                        <span class="old">Tk 3,999</span>
-                        <span class="new">Tk 2,999</span>
-                    </div>
-
-                    <a href="product3.html" class="shop-btn">SHOP NOW</a>
-                </div>
-            </div>
-
-            <!-- PRODUCT 3 -->
-            <div class="col-lg-3 col-6">
-                <div class="tr-card p-3">
-                    <img class="pimg" src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de" />
-
-                    <div class="pbrand">WEINBRENNER</div>
-                    <div class="pname">ERNEST WEINBRENNER</div>
-
-                    <div class="pprice">
-                        <span class="old">Tk 4,999</span>
-                        <span class="new">Tk 3,749</span>
-                    </div>
-
-                    <a href="product4.html" class="shop-btn">SHOP NOW</a>
-                </div>
-            </div>
-
-            <!-- PRODUCT 4 -->
-            <div class="col-lg-3 col-6">
-                <div class="tr-card p-3">
-                    <img class="pimg" src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77" />
-
-                    <div class="pbrand">WEINBRENNER</div>
-                    <div class="pname">OUTBACK WEINBRENNER</div>
-
-                    <div class="pprice">
-                        <span class="old">Tk 4,999</span>
-                        <span class="new">Tk 3,749</span>
-                    </div>
-
-                    <a href="product5.html" class="shop-btn">SHOP NOW</a>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-<section class="py-4">
-    <div class="container">
-
-        <h6 class="mb-3 fw-semibold">What's your style?</h6>
-
-        <div class="row g-4">
-
-            <!-- Casual -->
-            <div class="col-lg-4">
-                <div class="ws-card">
-                    <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=1200&q=60"
-                        alt="Casual">
-                    <div class="ws-overlay"></div>
-                    <div class="ws-content">
-                        <div class="ws-title">Casual</div>
-                        <a class="ws-btn" href="casual.html">Shop Now</a>
+                <!-- LEFT BIG -->
+                <div class="col-lg-8">
+                    <div class="act-card h-big">
+                        <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=1200&q=60"
+                            alt="Outdoors">
+                        <div class="act-overlay"></div>
+                        <div class="act-content">
+                            <h5 class="act-title big">Exploring the Outdoors</h5>
+                            <button class="act-btn">Shop Now</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Sporty -->
-            <div class="col-lg-4">
-                <div class="ws-card">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=60"
-                        alt="Sporty">
-                    <div class="ws-overlay"></div>
-                    <div class="ws-content">
-                        <div class="ws-title">Sporty</div>
-                        <a class="ws-btn" href="sporty.html">Shop Now</a>
+                <!-- RIGHT TOP -->
+                <div class="col-lg-4">
+                    <div class="act-card h-top">
+                        <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=900&q=60"
+                            alt="Everyday">
+                        <div class="act-overlay"></div>
+                        <div class="act-content">
+                            <h5 class="act-title mid">Everyday<br>Living</h5>
+                            <button class="act-btn">Shop Now</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Trendy -->
-            <div class="col-lg-4">
-                <div class="ws-card">
-                    <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1200&q=60"
-                        alt="Trendy">
-                    <div class="ws-overlay"></div>
-                    <div class="ws-content">
-                        <div class="ws-title">Trendy</div>
-                        <a class="ws-btn" href="trendy.html">Shop Now</a>
+                <!-- BOTTOM LEFT (RUNNING) -->
+                <div class="col-lg-4 col-6">
+                    <div class="act-card h-sm">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=60"
+                            alt="Running">
+                        <div class="act-overlay"></div>
+                        <div class="act-content">
+                            <h5 class="act-title sm">Running</h5>
+                            <button class="act-btn">Shop Now</button>
+                        </div>
                     </div>
                 </div>
+
+                <!-- BOTTOM MID (WALKING) -->
+                <div class="col-lg-4 col-6">
+                    <div class="act-card h-sm">
+                        <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=900&q=60"
+                            alt="Walking">
+                        <div class="act-overlay"></div>
+                        <div class="act-content">
+                            <h5 class="act-title sm">Walking</h5>
+                            <button class="act-btn">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ICONS + BUTTON -->
+                <div class="col-lg-4">
+                    <div class="act-icons h-icons">
+                        <div class="icon-grid">
+                            <!-- use your own sneaker svg/png icons -->
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="icon">
+                        </div>
+
+                        <button class="act-showall">Show All Sneakers</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container">
+
+            <!-- TITLE -->
+            <div class="tr-title">
+                <h6 class="fw-semibold">Trending now</h6>
+                <button class="tr-arrow">›</button>
+            </div>
+
+            <div class="row g-3">
+
+                <!-- FEATURED -->
+                <div class="col-lg-3">
+                    <div class="tr-card p-3 position-relative">
+
+                        <span class="heart">♡</span>
+
+                        <img class="tr-img" src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8" />
+
+                        <div class="sizes">7 8 9 10</div>
+
+                        <div class="meta">NORTH STAR</div>
+                        <div class="name">NORTH STAR MENS CANVAS</div>
+
+                        <div class="price">
+                            <span class="old">Tk 3,499</span>
+                            <span class="new">Tk 2,624</span>
+                        </div>
+
+                        <a href="product1.html" class="shop-btn">SHOP NOW</a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 1 -->
+                <div class="col-lg-3 col-6">
+                    <div class="tr-card p-3">
+                        <img class="pimg" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" />
+
+                        <div class="pbrand">BATA (MEN)</div>
+                        <div class="pname">SURGE MENS CASUAL</div>
+
+                        <div class="pprice">
+                            <span class="old">Tk 3,999</span>
+                            <span class="new">Tk 2,999</span>
+                        </div>
+
+                        <a href="product2.html" class="shop-btn">SHOP NOW</a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 2 -->
+                <div class="col-lg-3 col-6">
+                    <div class="tr-card p-3">
+                        <img class="pimg" src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8" />
+
+                        <div class="pbrand">BATA (MEN)</div>
+                        <div class="pname">SURGE MENS CASUAL</div>
+
+                        <div class="pprice">
+                            <span class="old">Tk 3,999</span>
+                            <span class="new">Tk 2,999</span>
+                        </div>
+
+                        <a href="product3.html" class="shop-btn">SHOP NOW</a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 3 -->
+                <div class="col-lg-3 col-6">
+                    <div class="tr-card p-3">
+                        <img class="pimg" src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de" />
+
+                        <div class="pbrand">WEINBRENNER</div>
+                        <div class="pname">ERNEST WEINBRENNER</div>
+
+                        <div class="pprice">
+                            <span class="old">Tk 4,999</span>
+                            <span class="new">Tk 3,749</span>
+                        </div>
+
+                        <a href="product4.html" class="shop-btn">SHOP NOW</a>
+                    </div>
+                </div>
+
+                <!-- PRODUCT 4 -->
+                <div class="col-lg-3 col-6">
+                    <div class="tr-card p-3">
+                        <img class="pimg" src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77" />
+
+                        <div class="pbrand">WEINBRENNER</div>
+                        <div class="pname">OUTBACK WEINBRENNER</div>
+
+                        <div class="pprice">
+                            <span class="old">Tk 4,999</span>
+                            <span class="new">Tk 3,749</span>
+                        </div>
+
+                        <a href="product5.html" class="shop-btn">SHOP NOW</a>
+                    </div>
+                </div>
+
             </div>
 
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="py-4">
-    <div class="container">
+    <section class="py-4">
+        <div class="container">
 
-        <!-- Header -->
-        <div class="brand-header">
-            <h6>Shop by brand</h6>
-            <div class="brand-arrows">
-                <button>‹</button>
-                <button>›</button>
+            <h6 class="mb-3 fw-semibold">What's your style?</h6>
+
+            <div class="row g-4">
+
+                <!-- Casual -->
+                <div class="col-lg-4">
+                    <div class="ws-card">
+                        <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea0a8?auto=format&fit=crop&w=1200&q=60"
+                            alt="Casual">
+                        <div class="ws-overlay"></div>
+                        <div class="ws-content">
+                            <div class="ws-title">Casual</div>
+                            <a class="ws-btn" href="casual.html">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sporty -->
+                <div class="col-lg-4">
+                    <div class="ws-card">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=60"
+                            alt="Sporty">
+                        <div class="ws-overlay"></div>
+                        <div class="ws-content">
+                            <div class="ws-title">Sporty</div>
+                            <a class="ws-btn" href="sporty.html">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trendy -->
+                <div class="col-lg-4">
+                    <div class="ws-card">
+                        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1200&q=60"
+                            alt="Trendy">
+                        <div class="ws-overlay"></div>
+                        <div class="ws-content">
+                            <div class="ws-title">Trendy</div>
+                            <a class="ws-btn" href="trendy.html">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </section>
 
-        <!-- Brands -->
-        <div class="row g-4 text-center">
+    <section class="py-4">
+        <div class="container">
 
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="brand-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Bata_Logo.png" alt="Bata">
+            <!-- Header -->
+            <div class="brand-header">
+                <h6>Shop by brand</h6>
+                <div class="brand-arrows">
+                    <button>‹</button>
+                    <button>›</button>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="brand-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas">
+            <!-- Brands -->
+            <div class="row g-4 text-center">
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="brand-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Bata_Logo.png" alt="Bata">
+                    </div>
                 </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="brand-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas">
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="brand-box">
+                        <img src="https://i.ibb.co/0XyQF9P/bata3d.png" alt="Bata 3D">
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="brand-box">
+                        <img src="https://i.ibb.co/7zFq0Vv/power-logo.png" alt="Power">
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-6">
+                    <div class="brand-box">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Hush_Puppies_logo.svg"
+                            alt="Hush Puppies">
+                    </div>
+                </div>
+
             </div>
 
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="brand-box">
-                    <img src="https://i.ibb.co/0XyQF9P/bata3d.png" alt="Bata 3D">
-                </div>
+        </div>
+    </section>
+    <section class="py-4">
+        <div class="container">
+
+            <!-- TOP WIDE BANNER -->
+            <div class="ss-wide h-banner mb-4">
+                <img src="https://images.unsplash.com/photo-1526401485004-2aa7f3c1b8f8?auto=format&fit=crop&w=1600&q=60"
+                    alt="Banner">
             </div>
 
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="brand-box">
-                    <img src="https://i.ibb.co/7zFq0Vv/power-logo.png" alt="Power">
+            <!-- ROW 1 -->
+            <div class="row g-0 align-items-stretch mb-4">
+
+                <!-- Left Image -->
+                <div class="col-lg-8">
+                    <div class="ss-imgbox h-rowimg">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=60"
+                            alt="Sneaker guide">
+                    </div>
                 </div>
+
+                <!-- Right Text -->
+                <div class="col-lg-4 border-top border-bottom border-end">
+                    <div class="ss-text h-100 d-flex flex-column justify-content-center">
+                        <div class="ss-title">Ultimate Sneakers Guide: The Right Pair for Any Occasion</div>
+                        <p class="ss-desc mb-3">
+                            What are sneakers? Sneaker shoes are a part of our lifestyle. You can wear them on almost
+                            any occasion.
+                            Sneakers were initially created for sports and other physical activities.
+                        </p>
+                        <div>
+                            <a class="ss-btn" href="collection.html">Explore the collection</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="brand-box">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Hush_Puppies_logo.svg"
-                        alt="Hush Puppies">
+            <hr class="my-4">
+
+            <!-- ROW 2 -->
+            <div class="row g-0 align-items-stretch">
+
+                <!-- Left Image -->
+                <div class="col-lg-8">
+                    <div class="ss-imgbox h-rowimg" style="background:#f2f2f2;">
+                        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1400&q=60"
+                            alt="Cleaning steps">
+                    </div>
                 </div>
+
+                <!-- Right Text -->
+                <div class="col-lg-4 border-top border-bottom border-end">
+                    <div class="ss-text h-100 d-flex flex-column justify-content-center">
+                        <div class="ss-title">3 Simple Steps for Cleaning Any Type of Leather Shoe</div>
+                        <p class="ss-desc mb-3">
+                            The leather industry in Bangladesh provides some of our finest and durable materials.
+                            It is used to craft some of the finest shoes around, ensuring longevity and usage.
+                        </p>
+                        <div>
+                            <a class="ss-btn" href="blog.html">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
+    </section>
 
-    </div>
-</section>
-<section class="py-4">
-  <div class="container">
+    <section class="feature-section">
+        <div class="container">
 
-    <!-- TOP WIDE BANNER -->
-    <div class="ss-wide h-banner mb-4">
-      <img
-        src="https://images.unsplash.com/photo-1526401485004-2aa7f3c1b8f8?auto=format&fit=crop&w=1600&q=60"
-        alt="Banner">
-    </div>
+            <div class="row text-center">
 
-    <!-- ROW 1 -->
-    <div class="row g-0 align-items-stretch mb-4">
+                <!-- ITEM 1 -->
+                <div class="col-lg-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="delivery">
+                        </div>
+                        <div class="feature-title">
+                            FREE DELIVERY<br>OVER 400 TAKA
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Left Image -->
-      <div class="col-lg-8">
-        <div class="ss-imgbox h-rowimg">
-          <img
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=60"
-            alt="Sneaker guide">
+                <!-- ITEM 2 -->
+                <div class="col-lg-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="exchange">
+                        </div>
+                        <div class="feature-title">
+                            EXCHANGE FROM<br>ONLINE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ITEM 3 -->
+                <div class="col-lg-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="return">
+                        </div>
+                        <div class="feature-title">
+                            30 DAYS RETURN
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ITEM 4 -->
+                <div class="col-lg-3 col-6">
+                    <div class="feature-box">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="login">
+                        </div>
+                        <div class="feature-title">
+                            LOGIN TO BATA<br>CLUB ACCOUNT
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-      </div>
+    </section>
 
-      <!-- Right Text -->
-      <div class="col-lg-4 border-top border-bottom border-end">
-        <div class="ss-text h-100 d-flex flex-column justify-content-center">
-          <div class="ss-title">Ultimate Sneakers Guide: The Right Pair for Any Occasion</div>
-          <p class="ss-desc mb-3">
-            What are sneakers? Sneaker shoes are a part of our lifestyle. You can wear them on almost any occasion.
-            Sneakers were initially created for sports and other physical activities.
-          </p>
-          <div>
-            <a class="ss-btn" href="collection.html">Explore the collection</a>
-          </div>
+    <!-- Footer -->
+    <footer class="bata-footer pt-5 pb-4">
+        <div class="container">
+
+            <!-- Top links -->
+            <div class="row g-4">
+
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h6 class="footer-title">ABOUT</h6>
+                    <ul class="footer-list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Awards &amp; Recognition</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Bata Franchise</a></li>
+                        <li><a href="#">Share Department</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h6 class="footer-title">INFORMATION</h6>
+                    <ul class="footer-list">
+                        <li><a href="#">TERMS &amp; CONDITIONS</a></li>
+                        <li><a href="#">Payment Options</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Franchise Programme</a></li>
+                        <li><a href="#">Coverage areas</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h6 class="footer-title">POPULAR BRANDS</h6>
+                    <ul class="footer-list">
+                        <li><a href="#">Bata</a></li>
+                        <li><a href="#">Hush Puppies</a></li>
+                        <li><a href="#">Power</a></li>
+                        <li><a href="#">Comfit</a></li>
+                        <li><a href="#">Weinbrenner</a></li>
+                        <li><a href="#">North Star</a></li>
+                        <li><a href="#">Marie Claire</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-2">
+                    <h6 class="footer-title">CUSTOMER SERVICE</h6>
+                    <ul class="footer-list">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">MyBata</a></li>
+                        <li><a href="#">Bata Stores</a></li>
+                        <li><a href="#">All About Feet</a></li>
+                        <li><a href="#">Contact Info</a></li>
+                        <li><a href="#">Report Issue</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-8 col-lg-4">
+                    <h6 class="footer-title">INFO</h6>
+                    <div class="footer-text">
+                        <p class="mb-2">Bata Shoe Company Bangladesh Ltd.</p>
+                        <p class="mb-3">Tongi Gazipur, Bangladesh.</p>
+                        <p class="mb-2">Call us at: 09666200300 (9am-9pm)</p>
+                        <p class="mb-0">Email: bd.customercare@bata.com</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Divider -->
+            <hr class="footer-divider my-4">
+
+            <!-- Bottom row -->
+            <div
+                class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
+
+                <div class="fw-semibold footer-newsletter">Sign up for our Newsletter</div>
+
+                <div class="d-flex align-items-center gap-3 ms-md-auto">
+                    <a class="footer-social" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a class="footer-social" href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a class="footer-social" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a class="footer-social" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+
+
+                </div>
+            </div>
+            <br class="my-5">
+
+            <!-- Copyright -->
+            <div class="text-center footer-copy mt-5">
+                © 2024 Bata Shoe Company Bangladesh Ltd. Tongi, Postal code - 1710, Gazipur, Bangladesh
+            </div>
+
+            <!-- Payment icons -->
+            <div class="d-flex justify-content-center gap-2 mt-3 flex-wrap">
+                <div class="pay-box">VISA</div>
+                <div class="pay-box">MC</div>
+                <div class="pay-box">AMEX</div>
+            </div>
+
         </div>
-      </div>
+    </footer>
 
-    </div>
+    <!-- Bootstrap Bundle -->
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
 
-    <hr class="my-4">
-
-    <!-- ROW 2 -->
-    <div class="row g-0 align-items-stretch">
-
-      <!-- Left Image -->
-      <div class="col-lg-8">
-        <div class="ss-imgbox h-rowimg" style="background:#f2f2f2;">
-          <img
-            src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1400&q=60"
-            alt="Cleaning steps">
-        </div>
-      </div>
-
-      <!-- Right Text -->
-      <div class="col-lg-4 border-top border-bottom border-end">
-        <div class="ss-text h-100 d-flex flex-column justify-content-center">
-          <div class="ss-title">3 Simple Steps for Cleaning Any Type of Leather Shoe</div>
-          <p class="ss-desc mb-3">
-            The leather industry in Bangladesh provides some of our finest and durable materials.
-            It is used to craft some of the finest shoes around, ensuring longevity and usage.
-          </p>
-          <div>
-            <a class="ss-btn" href="blog.html">Read more</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<section class="feature-section">
-  <div class="container">
-
-    <div class="row text-center">
-
-      <!-- ITEM 1 -->
-      <div class="col-lg-3 col-6">
-        <div class="feature-box">
-          <div class="feature-icon">
-            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="delivery">
-          </div>
-          <div class="feature-title">
-            FREE DELIVERY<br>OVER 400 TAKA
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 2 -->
-      <div class="col-lg-3 col-6">
-        <div class="feature-box">
-          <div class="feature-icon">
-            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="exchange">
-          </div>
-          <div class="feature-title">
-            EXCHANGE FROM<br>ONLINE
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 3 -->
-      <div class="col-lg-3 col-6">
-        <div class="feature-box">
-          <div class="feature-icon">
-            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="return">
-          </div>
-          <div class="feature-title">
-            30 DAYS RETURN
-          </div>
-        </div>
-      </div>
-
-      <!-- ITEM 4 -->
-      <div class="col-lg-3 col-6">
-        <div class="feature-box">
-          <div class="feature-icon">
-            <img src="https://i.ibb.co/3Wb9g4M/icon1.png" alt="login">
-          </div>
-          <div class="feature-title">
-            LOGIN TO BATA<br>CLUB ACCOUNT
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
+</html>

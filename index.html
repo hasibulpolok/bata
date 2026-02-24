@@ -20,12 +20,6 @@
   <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="/styles/style.css">
 
-  <!-- minimal css -->
-  <style>
-    body {
-      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-  </style>
 </head>
 
 <body class="bg-white">
@@ -59,7 +53,7 @@
         </div>
 
         <!-- CENTER LOGO -->
-        <a href="#" class="text-decoration-none">
+        <a href="index.html" class="text-decoration-none">
           <img src="assets/images/logo.png" alt="Bata" style="height: 34px; width: auto;">
         </a>
 
@@ -98,20 +92,342 @@
     </div>
 
     <!-- DESKTOP NAV -->
-    <nav class="d-none d-lg-block border-top">
-      <div class="container-fluid">
-        <ul class="nav justify-content-center gap-4 py-2 fw-semibold text-uppercase">
-          <li class="nav-item"><a class="nav-link text-danger" href="#">Eid Collection</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#">Sneaker Studio</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#">Brands</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#">Men</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#">Women</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#">Children</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#">Accessories</a></li>
-          <li class="nav-item"><a class="nav-link text-dark" href="#">Bata Club</a></li>
-        </ul>
-      </div>
-    </nav>
+    <nav class="d-none d-lg-block border-top bata-desktop-nav">
+  <div class="container-fluid">
+    <ul class="nav justify-content-center gap-4 py-2 fw-semibold text-uppercase">
+
+      <li class="nav-item">
+        <a class="nav-link text-danger" href="eidcollection.html">Eid Collection</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="brands.html">Sneaker Studio</a>
+      </li>
+
+      <!-- BRANDS (simple dropdown list like screenshot) -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="brands.html" role="button" data-bs-toggle="dropdown">Brands</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-4">
+              <div class="col-lg-3">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Power</a></li>
+                  <li><a href="#">North star</a></li>
+                  <li><a href="#">Bata Red Label</a></li>
+                  <li><a href="#">Adidas</a></li>
+                  <li><a href="#">Bata</a></li>
+                  <li><a href="#">Comfit</a></li>
+                  <li><a href="#">Hush puppies</a></li>
+                  <li><a href="#">Weinbrenner</a></li>
+                  <li><a href="#">Scholl</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- MEN (mega menu) -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Men</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+
+              <div class="col-lg-3">
+                <div class="mega-title">All shoes</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Apparel</a></li>
+                  <li><a href="#">Casual Shoes</a></li>
+                  <li><a href="#">Formal Shoes</a></li>
+                  <li><a href="#">Mens Sandal</a></li>
+                  <li><a href="#">Mocassino</a></li>
+                  <li><a href="#">Sports</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Adidas</a></li>
+                  <li><a href="#">Ambassador</a></li>
+                  <li><a href="#">Bata</a></li>
+                  <li><a href="#">Bata Comfit</a></li>
+                  <li><a href="#">Bata Red Label</a></li>
+                  <li><a href="#">Hush Puppies</a></li>
+                  <li><a href="#">North Star</a></li>
+                  <li><a href="#">Power</a></li>
+                  <li><a href="#">Weinbrenner</a></li>
+                  <li><a href="#">Scholl</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By color</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Black</a></li>
+                  <li><a href="#">Blue</a></li>
+                  <li><a href="#">Brown</a></li>
+                  <li><a href="#">Gray</a></li>
+                  <li><a href="#">Green</a></li>
+                  <li><a href="#">Red</a></li>
+                  <li><a href="#">Pink</a></li>
+                  <li><a href="#">Yellow</a></li>
+                  <li><a href="#">White</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By price</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Under Tk.1000</a></li>
+                  <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                  <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                  <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                  <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                  <li><a href="#">Tk.4001 - Tk.5000</a></li>
+                  <li><a href="#">Above Tk.5000</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">By size</div>
+                <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 8</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 9</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 10</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 11</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- WOMEN -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Women</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+
+              <div class="col-lg-3">
+                <div class="mega-title">All shoes</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Apparel</a></li>
+                  <li><a href="#">Ladies Sandals</a></li>
+                  <li><a href="#">Ladies Heel</a></li>
+                  <li><a href="#">Ladies Sports Shoes</a></li>
+                  <li><a href="#">Ladies Casual & Formal Closed Shoes</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Bata</a></li>
+                  <li><a href="#">Bata Comfit</a></li>
+                  <li><a href="#">Bata Red Label</a></li>
+                  <li><a href="#">Power</a></li>
+                  <li><a href="#">Hush Puppies</a></li>
+                  <li><a href="#">North Star</a></li>
+                  <li><a href="#">Scholl</a></li>
+                  <li><a href="#">Adidas</a></li>
+                  <li><a href="#">Marie Claire</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By color</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Black</a></li>
+                  <li><a href="#">Blue</a></li>
+                  <li><a href="#">Brown</a></li>
+                  <li><a href="#">Gray</a></li>
+                  <li><a href="#">Green</a></li>
+                  <li><a href="#">Pink</a></li>
+                  <li><a href="#">Red</a></li>
+                  <li><a href="#">Yellow</a></li>
+                  <li><a href="#">White</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By price</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Under Tk.1000</a></li>
+                  <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                  <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                  <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                  <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                  <li><a href="#">Tk.4001 - Tk.5000</a></li>
+                  <li><a href="#">Above Tk.5000</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">By size</div>
+                <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 3</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 4</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- CHILDREN -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Children</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+
+              <div class="col-lg-3">
+                <div class="mega-title">Boys</div>
+                <ul class="mega-list mb-3">
+                  <li><a class="hot" href="#">Sandal</a></li>
+                  <li><a href="#">Sports</a></li>
+                  <li><a href="#">Kids' Casuals (Boys)</a></li>
+                </ul>
+
+                <div class="mega-title">Girls</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Sandal</a></li>
+                  <li><a href="#">Sports</a></li>
+                  <li><a href="#">Kids' Casuals (Girls)</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Bata</a></li>
+                  <li><a href="#">Weinbrenner</a></li>
+                  <li><a href="#">Bubblegummers</a></li>
+                  <li><a href="#">Power</a></li>
+                  <li><a href="#">Justice League</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By color</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Black</a></li>
+                  <li><a href="#">Blue</a></li>
+                  <li><a href="#">Brown</a></li>
+                  <li><a href="#">Gray</a></li>
+                  <li><a href="#">Green</a></li>
+                  <li><a href="#">Pink</a></li>
+                  <li><a href="#">Red</a></li>
+                  <li><a href="#">White</a></li>
+                  <li><a href="#">Yellow</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="mega-title">By price</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Under Tk.1000</a></li>
+                  <li><a href="#">Tk.1001 - Tk.1500</a></li>
+                  <li><a href="#">Tk.1501 - Tk.2000</a></li>
+                  <li><a href="#">Tk.2001 - Tk.3000</a></li>
+                  <li><a href="#">Tk.3001 - Tk.4000</a></li>
+                  <li><a href="#">Above Tk.5000</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">By size</div>
+                <a class="size-item hot" href="#"><i class="bi bi-shoe-print"></i> 1</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 2</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 3</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 4</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 5</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 6</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 7</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 8</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 9</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 10</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 11</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 12</a>
+                <a class="size-item" href="#"><i class="bi bi-shoe-print"></i> 13</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ACCESSORIES -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Accessories</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row g-5">
+              <div class="col-lg-3">
+                <div class="mega-title">Apparel</div>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">Bag</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Backpack</a></li>
+                  <li><a href="#">Ladies Handbags</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">Brands</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Adidas</a></li>
+                  <li><a href="#">Bata</a></li>
+                  <li><a href="#">Prive Roma</a></li>
+                  <li><a href="#">Marie Claire</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="mega-title">Others</div>
+                <ul class="mega-list">
+                  <li><a class="hot" href="#">Belts</a></li>
+                  <li><a href="#">Wallets</a></li>
+                  <li><a href="#">Shoe Care</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- BATA CLUB -->
+      <li class="nav-item dropdown position-static">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Bata Club</a>
+        <div class="dropdown-menu">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <ul class="mega-list">
+                  <li><a href="#">Check your Bata Club points</a></li>
+                  <li><a href="#">Register Yourself</a></li>
+                  <li><a href="#">Bata Club Benefits</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</nav>
 
   </header>
 
@@ -123,9 +439,9 @@
     </div>
     <div class="offcanvas-body">
       <ul class="nav flex-column fw-semibold text-uppercase gap-2">
-        <li class="nav-item"><a class="nav-link text-danger" href="#">Eid Collection</a></li>
-        <li class="nav-item"><a class="nav-link text-dark" href="#">Sneaker Studio</a></li>
-        <li class="nav-item"><a class="nav-link text-dark" href="#">Brands</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="eidcollection.html">Eid Collection</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="brands.html">Sneaker Studio</a></li>
+        <li class="nav-item"><a class="nav-link text-dark" href="eidcollection.html">Brands</a></li>
         <li class="nav-item"><a class="nav-link text-dark" href="#">Men</a></li>
         <li class="nav-item"><a class="nav-link text-dark" href="#">Women</a></li>
         <li class="nav-item"><a class="nav-link text-dark" href="#">Children</a></li>
